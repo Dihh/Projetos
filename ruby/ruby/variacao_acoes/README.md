@@ -4,6 +4,7 @@
 * Ruby
 * CLI
 * Orientado a Objetos
+* testes
 
 Permite o usuário navegar em um menu apertando teclas
 Permite o usuário CRUD dados sobre ações em determinada data
