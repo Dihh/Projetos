@@ -2,7 +2,7 @@ console.log(1)
 
 document.querySelector('body').innerHTML = localStorage.a
 
-var openRequest = indexedDB.open('teste',1)
+var openRequest = indexedDB.open('teste', 1)
 
 openRequest.onupgradeneeded = e => {
     console.log('banco criado')
