@@ -2,12 +2,19 @@
 
 # Acao da bolsa
 class Acao
-  def initialize(code, values)
+  def initialize(code)
     @code = code
-    @values = values
+    @values = []
   end
 
   def add_value(date, value)
     @values << { date => date, value => value }
+  end
+
+  def to_hash
+    {
+      'code' => @code,
+      'values' => @values
+    }
   end
 end
