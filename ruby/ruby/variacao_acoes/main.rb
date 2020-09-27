@@ -5,6 +5,7 @@ def main
   option = ''
   puts menu.print_options
   while option != '0'
+    puts "\nDigite uma opção:"
     option = gets.strip
     system 'clear'
     puts menu.print_options

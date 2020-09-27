@@ -9,14 +9,12 @@ require_relative './acao'
 class AcaoList
   def initialize
     @file_manager = FileManager.new
-    @acao_list = []
+    @acao_list = load
   end
 
   def listar_todas_acoes
     hash_acao_list = []
-    hash_acao_list << @acao_list.map do |acao|
-      acao.to_hash
-    end
+    hash_acao_list << @acao_list.map(&:to_hash)
     puts hash_acao_list
   end
 
@@ -29,8 +27,9 @@ class AcaoList
   end
 
   def criar_acao
-    acao = Acao.new('001')
+    acao = Acao.new('001', [])
     @acao_list << acao
+    save
   end
 
   def adicionar_valor_em_acao
@@ -58,14 +57,14 @@ class AcaoList
   end
 
   def load
-    @acao_list = @file_manager.read_file
+    data = @file_manager.read_file
+    data.map do |element|
+      Acao.new(element['code'], element['values'])
+    end
   end
 
   def save
-    hash_acao_list = []
-    hash_acao << acao_list.map do |acao|
-      acao.to_hash
-    end
-    @acao_list = @file_manager.write_file
+    hash_acao_list = @acao_list.map(&:to_hash)
+    @file_manager.write_file(hash_acao_list)
   end
 end

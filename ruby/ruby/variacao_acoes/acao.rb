@@ -2,9 +2,9 @@
 
 # Acao da bolsa
 class Acao
-  def initialize(code)
+  def initialize(code, values)
     @code = code
-    @values = []
+    @values = values
   end
 
   def add_value(date, value)

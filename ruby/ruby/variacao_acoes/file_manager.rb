@@ -12,5 +12,7 @@ class FileManager
     JSON.parse(data)
   end
 
-  def write_file; end
+  def write_file(acao_list)
+    File.write(FILE_NAME, JSON.generate(acao_list), mode: 'w')
+  end
 end
